@@ -1,10 +1,10 @@
 <?php
 /***********************************************************************
-* @name  AnyWhereInDB
-* @author Nafis Ahmad 
-* @abstract This project is to find out a part of string from anywhere in database
-* @version 0.22  
-* @package anywhereindb
+* @name  ReplaceAnyWhereInDB
+* @author Nafis Ahmad (http://code.google.com/p/anywhereindb/)
+* @modifier Leandro Repolho (https://github.com/leandrocr/replaceanywhereindb)
+* @abstract This project is to find and replace a part of string from anywhere in database
+* @package replaceanywhereindb
 *
 *
 *
@@ -121,11 +121,22 @@ else
 	<div style="position:absolute; right:100px; width:100px;"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?logout=out">Disconnect/Change Database</a></div>
 	<div>
 		<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">  
+			<input type="hidden" name="isreplace" value="0">
 			<label for="search_text"> Search on Database '<?php echo $dbname ?>'</label><br />
 			<input type="text" name="search_text" <?php if(!empty($_POST['search_text'])) echo 'value="'.$_POST['search_text'].'"';  ?> />
-			<input type="submit" value="Search" />
+			<input type="submit" value="Search" /><br/>
+			
+			<label for="replace_text"> Replace results by this value:</label>
+			<input type="text" name="replace_text" <?php if(!empty($_POST['replace_text'])) echo 'value="'.$_POST['replace_text'].'"';  ?> />
+			<input type="button" value="Replace" onclick="javascript: fn_replaceclick(this.form);" />
 		</form>
 	</div>
+	<script type="text/javascript">
+		function fn_replaceclick(formu){
+			formu.isreplace.value = 1;
+			formu.submit();
+		}
+	</script>
 	<?php 
 	//endof html search form
 
@@ -240,9 +251,9 @@ else
 ?>
 <br/>
 <br/>
-<span  class="me">"AnyWhereInDB" is a Open Source Project, developed by <a href="http://twitter.com/happy56">Nafis Ahmad</a>. 
+<span  class="me">"ReplaceAnyWhereInDB" is a Open Source Project modified by <a href="http://twitter.com/leandrorepolho">Leandro Repolho</a>, strongly based on "AnyWhereInDB" developed by <a href="http://twitter.com/happy56">Nafis Ahmad</a>.
 <br /> 
-<a href="http://code.google.com/p/anywhereindb">http://code.google.com/p/anywhereindb </a>
+<a href="https://github.com/leandrocr/replaceanywhereindb">https://github.com/leandrocr/replaceanywhereindb</a>
 </span>
 </body>
 </html>
@@ -348,14 +359,14 @@ function html_header()
 <head>
 <!--
 //----------------------------------------------------------------------------------------------------------------------//
-* @name  AnyWhereInDB
-* @author Nafis Ahmad happy56[at]gmail.com // http://twitter.com/happy56
-* @abstract This project is to find out a part of string from anywhere in database
-* @version 0.22
-* @package anywhereindb
+* @name  ReplaceAnyWhereInDB
+* @author Nafis Ahmad (http://code.google.com/p/anywhereindb/)
+* @modifier Leandro Repolho (https://github.com/leandrocr/replaceanywhereindb)
+* @abstract This project is to find and replace a part of string from anywhere in database
+* @package replaceanywhereindb
 //----------------------------------------------------------------------------------------------------------------------//
 -->
-<title>Any where In DB || AnyWhereInDB.php</title>
+<title>Repalce Any where In DB || ReplaceAnyWhereInDB.php</title>
 <script language="JavaScript">
 	//@var array| initilazed 
 	var table_id =new Array();
@@ -435,10 +446,10 @@ a{font-size:11px; font-family:arial;}
 </style>
 </head>
 <body>
-<h1>AnyWhereInDB.php</h1>
+<h1>ReplaceAnyWhereInDB.php</h1>
 <?php
 
 }//@endof  function html_head
 //---------------------------------------------------------------------------------------------------------------------------------//
-//@endof file anywhereindb.php
-//@note if you have querry, need, idea, help; fell free to contact happy56[at]gmail.com
+//@endof file replaceanywhereindb.php
+//@note if you have querry, need, idea, help; fell free to contact http://twitter.com/leandrorepolho
